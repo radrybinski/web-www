@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Engineer Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header class="site-header">
+        <div class="logo">
+            <a href="index.html">John Doe<span class="dot">.</span></a>
+        </div>
+        
+        <nav class="navbar">
+            <button id="menu-toggle" aria-label="Toggle Menu" class="mobile-only">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About me</a></li>
+                <li><a href="projects.html" class="active-link">Projects</a></li>
+                <li><a href="links.html">Links</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+
+            <button id="theme-toggle" aria-label="Toggle Dark Mode">
+                <span class="icon">◐</span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Projects List Section -->
+    <main class="main-content">
+        <section class="projects-section">
+            <div class="projects-header">
+                <h1>Selected Work</h1>
+                <p>A collection of hardware builds, software experiments, and systems engineering.</p>
+            </div>
+
+            <!-- Project 1 -->
+            <!-- The whole block is a link to the sub-page -->
+            <a href="project1.html" class="project-card">
+                <div class="project-thumb-wrapper">
+                    <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=400&q=80" 
+                         alt="Robot Arm Prototype" class="project-thumb">
+                </div>
+                <div class="project-info">
+                    <h2>Autonomous 6-DOF Robotic Arm</h2>
+                    <p>
+                        Designed and 3D printed a 6-axis robotic arm controlled by Arduino and Python. 
+                        Implemented inverse kinematics for precise path planning and object manipulation.
+                        This project explores the intersection of rapid prototyping and control theory.
+                    </p>
+                    <span class="read-more">View Project &rarr;</span>
+                </div>
+            </a>
+
+            <!-- Project 2 -->
+            <a href="project2.html" class="project-card">
+                <div class="project-thumb-wrapper">
+                    <img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?auto=format&fit=crop&w=400&q=80" 
+                         alt="Code on screen" class="project-thumb">
+                </div>
+                <div class="project-info">
+                    <h2>Computer Vision Parts Sorter</h2>
+                    <p>
+                        A machine learning application utilizing OpenCV and TensorFlow to identify and sort mechanical fasteners (bolts, nuts, washers) in real-time. 
+                        Achieved 95% accuracy in varying lighting conditions.
+                    </p>
+                    <span class="read-more">View Project &rarr;</span>
+                </div>
+            </a>
+
+            <!-- Project 3 -->
+            <a href="project3.html" class="project-card">
+                <div class="project-thumb-wrapper">
+                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=400&q=80" 
+                         alt="CAD Model" class="project-thumb">
+                </div>
+                <div class="project-info">
+                    <h2>Planetary Gearbox Optimization</h2>
+                    <p>
+                        A comprehensive study and CAD redesign of a planetary gearbox for high-torque applications. 
+                        Includes Finite Element Analysis (FEA) results on stress distribution and thermal efficiency simulations.
+                    </p>
+                    <span class="read-more">View Project &rarr;</span>
+                </div>
+            </a>
+
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2023 John Doe. Built with logic and steel.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

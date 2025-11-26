@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Engineer Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header class="site-header">
+        <div class="logo">
+            <a href="index.html">John Doe<span class="dot">.</span></a>
+        </div>
+        
+        <nav class="navbar">
+            <!-- Mobile Menu Button -->
+            <button id="menu-toggle" aria-label="Toggle Menu" class="mobile-only">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+
+            <!-- Navigation Links -->
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html" class="active-link">Home</a></li>
+                <li><a href="about.html">About me</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="links.html">Links</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+
+            <!-- Theme Toggle (visible on all screens) -->
+            <button id="theme-toggle" aria-label="Toggle Dark Mode">
+                <span class="icon">◐</span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <main class="hero-section">
+        <div class="hero-container">
+            
+            <!-- Left Column: Text -->
+            <div class="hero-text">
+                <p class="intro-tag">Mechanical Engineer &amp; Creative Coder</p>
+                <h1>Bridging the gap between <br> hardware and intelligence.</h1>
+                <p class="hero-subtext">
+                    I build robots, write software, and document the journey. 
+                    Welcome to my digital garden of mechanics, AI, and aesthetics.
+                </p>
+                <div class="cta-group">
+                    <a href="projects.html" class="btn primary-btn">View Work</a>
+                    <a href="contact.html" class="btn secondary-btn">Get in touch</a>
+                </div>
+            </div>
+
+            <!-- Right Column: Image -->
+            <div class="hero-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                     alt="Robotic Arm Technology" 
+                     class="hero-img">
+            </div>
+
+        </div>
+    </main>
+
+   
+    <!-- Simple Footer -->
+    <footer>
+        <p>&copy; 2023 John Doe. Built with logic and steel.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

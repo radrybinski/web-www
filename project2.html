@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Parts Sorter - Engineer Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="logo"><a href="index.html">John Doe<span class="dot">.</span></a></div>
+        <nav class="navbar">
+            <button id="menu-toggle" class="mobile-only"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About me</a></li>
+                <li><a href="projects.html" class="active-link">Projects</a></li>
+                <li><a href="links.html">Links</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button id="theme-toggle"><span class="icon">◐</span></button>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <article class="project-article">
+            <h1>Computer Vision Parts Sorter</h1>
+            
+            <img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?auto=format&fit=crop&w=1000&q=80" 
+                 alt="Computer Vision Screen Analysis" class="project-detail-img">
+
+            <p>
+                In modern manufacturing, sorting small fasteners is a tedious task often prone to human error. This project aimed to automate the process using a webcam and computer vision algorithms. I built a small conveyor belt system using stepper motors, with a camera mounted directly overhead to capture frames of passing objects.
+            </p>
+            <p>
+                The software stack utilizes OpenCV for image preprocessing (greyscale conversion, thresholding, and contour detection). Once an object is isolated, I extract features such as aspect ratio, circularity, and area. These features are fed into a simple K-Nearest Neighbors (KNN) classifier to distinguish between bolts, nuts, and washers.
+            </p>
+
+            <div class="code-container">
+                <div class="code-header">Python - OpenCV Contour Detection</div>
+<pre>
+import cv2
+
+def process_frame(frame):
+    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    _, thresh = cv2.threshold(gray, 127, 255, cv2.THRESH_BINARY_INV)
+    
+    # Find contours
+    contours, _ = cv2.findContours(thresh, cv2.RETR_TREE, 
+                                   cv2.CHAIN_APPROX_SIMPLE)
+    
+    for cnt in contours:
+        area = cv2.contourArea(cnt)
+        if area > 500: # Filter noise
+            x, y, w, h = cv2.boundingRect(cnt)
+            cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
+            
+    return frame
+</pre>
+            </div>
+
+            <img src="https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?auto=format&fit=crop&w=1000&q=80" 
+                 alt="Hardware Setup" class="project-detail-img">
+
+            <p>
+                The system achieved a 95% accuracy rate under controlled lighting. One interesting challenge was the reflection from metallic parts causing glare, which confused the thresholding algorithm. I solved this by adding a polarizing filter to the camera lens and using diffuse LED lighting strips. Future work involves implementing a YOLOv8 model for better detection of overlapping parts.
+            </p>
+        </article>
+    </main>
+
+    <footer><p>&copy; 2023 John Doe. Built with logic and steel.</p></footer>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Links - Engineer Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header class="site-header">
+        <div class="logo">
+            <a href="index.html">John Doe<span class="dot">.</span></a>
+        </div>
+        
+        <nav class="navbar">
+            <button id="menu-toggle" aria-label="Toggle Menu" class="mobile-only">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About me</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="links.html" class="active-link">Links</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+
+            <button id="theme-toggle" aria-label="Toggle Dark Mode">
+                <span class="icon">◐</span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Links Section -->
+    <main class="main-content">
+        <section class="links-section">
+            <div class="links-container">
+                <h1>Reading List & Resources</h1>
+                <p class="section-intro">A curated collection of articles, tools, and papers that I find valuable.</p>
+
+                <!-- Link Item 1 -->
+                <article class="link-item">
+                    <p class="link-desc">
+                        **Boston Dynamics Blog** – An incredible resource for staying up to date with the cutting edge of mobile robotics and dynamic control systems. Their breakdown of the Atlas parkour routine is a must-read for control engineers.
+                    </p>
+                    <a href="https://bostondynamics.com/blog/" target="_blank" class="external-link">Visit Boston Dynamics &rarr;</a>
+                </article>
+
+                <!-- Link Item 2 -->
+                <article class="link-item">
+                    <p class="link-desc">
+                        **"Optimization of Thermal Efficiency in Micro-Turbines"** – A direct link to my latest academic paper published in the Journal of Mechanical Design. It covers the simulation models used to predict heat loss in ceramic components.
+                    </p>
+                    <a href="#" class="external-link">Read the Paper (PDF) &rarr;</a>
+                </article>
+
+                <!-- Link Item 3 -->
+                <article class="link-item">
+                    <p class="link-desc">
+                        **Hackaday** – My daily source for hardware hacking inspiration. From retro-computing to custom PCB design, this community documents the best DIY engineering projects on the web.
+                    </p>
+                    <a href="https://hackaday.com/" target="_blank" class="external-link">Browse Hackaday &rarr;</a>
+                </article>
+
+                <!-- Link Item 4 -->
+                <article class="link-item">
+                    <p class="link-desc">
+                        **Python for Mechanical Engineers** – A helpful cheat sheet and library collection (NumPy, SciPy, Matplotlib) specifically tailored for calculating stress, strain, and fluid dynamics without using heavy commercial software.
+                    </p>
+                    <a href="https://www.python.org/" target="_blank" class="external-link">View Documentation &rarr;</a>
+                </article>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2023 John Doe. Built with logic and steel.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

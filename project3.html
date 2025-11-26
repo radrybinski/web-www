@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planetary Gearbox - Engineer Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="logo"><a href="index.html">John Doe<span class="dot">.</span></a></div>
+        <nav class="navbar">
+            <button id="menu-toggle" class="mobile-only"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About me</a></li>
+                <li><a href="projects.html" class="active-link">Projects</a></li>
+                <li><a href="links.html">Links</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button id="theme-toggle"><span class="icon">◐</span></button>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <article class="project-article">
+            <h1>Planetary Gearbox Optimization</h1>
+            
+            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1000&q=80" 
+                 alt="CAD Model Render" class="project-detail-img">
+
+            <p>
+                For a high-torque robotic actuator, I needed a compact reduction system that could fit inside a 50mm diameter tube. A planetary gearset was the obvious choice due to its high power density. The design required a 4:1 reduction ratio. The primary challenge was selecting the correct module and number of teeth to ensure the sun, planets, and ring gear assembled correctly without interference.
+            </p>
+            <p>
+                I performed a theoretical stress analysis to verify that 3D printed Nylon gears could withstand the stall torque of the motor. The calculation involved determining the bending stress at the root of the gear tooth using the Lewis formula. I wrote a Python script to iterate through various gear modules and face widths to find the optimal balance between size and strength.
+            </p>
+
+            <div class="code-container">
+                <div class="code-header">Python - Gear Stress Calculation</div>
+<pre>
+def calculate_lewis_stress(force, module, face_width, lewis_form_factor):
+    """
+    Calculates bending stress based on Lewis Formula
+    Sigma = (Wt) / (F * m * Y)
+    """
+    tangential_load = force # Newtons
+    
+    # Stress in MPa
+    stress = tangential_load / (face_width * module * lewis_form_factor)
+    
+    return stress
+
+# Example: 50N load, Module 1.0, 10mm width, Y=0.3
+current_stress = calculate_lewis_stress(50, 1.0, 10, 0.3)
+print(f"Bending Stress: {current_stress:.2f} MPa")
+</pre>
+            </div>
+
+            <img src="https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?auto=format&fit=crop&w=1000&q=80" 
+                 alt="Mechanical Analysis" class="project-detail-img">
+
+            <p>
+                After the math was verified, I moved to Finite Element Analysis (FEA) in SolidWorks Simulation to validate the results. The FEA heatmap showed stress concentrations at the root fillets consistent with my calculations. The final design was printed in NylonX (carbon-fiber reinforced nylon), assembled, and successfully tested at 5Nm of torque without failure.
+            </p>
+        </article>
+    </main>
+
+    <footer><p>&copy; 2023 John Doe. Built with logic and steel.</p></footer>
+    <script src="script.js"></script>
+</body>
+</html>

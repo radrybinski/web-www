@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6-DOF Robotic Arm - Engineer Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="logo"><a href="index.html">John Doe<span class="dot">.</span></a></div>
+        <nav class="navbar">
+            <button id="menu-toggle" class="mobile-only"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About me</a></li>
+                <li><a href="projects.html" class="active-link">Projects</a></li>
+                <li><a href="links.html">Links</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button id="theme-toggle"><span class="icon">◐</span></button>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <article class="project-article">
+            <h1>Autonomous 6-DOF Robotic Arm</h1>
+            
+            <!-- Top Image -->
+            <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=1000&q=80" 
+                 alt="Robotic Arm Prototype" class="project-detail-img">
+
+            <p>
+                The goal of this project was to design and build a low-cost, 6-degree-of-freedom robotic manipulator capable of performing pick-and-place tasks with high repeatability. I utilized Fusion 360 for the CAD design, focusing on creating lightweight structural components that could be 3D printed in PLA+. The actuation is handled by high-torque metal gear servos, powered by an external 5V 10A supply.
+            </p>
+            <p>
+                The core challenge was implementing the control software. I chose Python for the kinematics engine due to its robust math libraries. The Inverse Kinematics (IK) solver calculates the necessary joint angles to reach a specific (x, y, z) coordinate in 3D space. This data is then sent via serial communication to an Arduino Mega, which handles the PWM signal generation for the servos.
+            </p>
+
+            <!-- Code Snippet -->
+            <div class="code-container">
+                <div class="code-header">Python - Inverse Kinematics Snippet</div>
+<pre>
+import numpy as np
+import math
+
+def calculate_inverse_kinematics(target_x, target_y, target_z):
+    # Length of arm segments
+    L1, L2, L3 = 100, 120, 100 
+    
+    # Base rotation (Theta 1)
+    theta1 = math.atan2(target_y, target_x)
+    
+    # Calculate reach in 2D plane
+    r = math.sqrt(target_x**2 + target_y**2)
+    
+    # Cosine rule for joint angles (simplified)
+    # ... calculation logic ...
+    
+    return [theta1, theta2, theta3]
+</pre>
+            </div>
+
+            <!-- Second Image -->
+            <img src="https://images.unsplash.com/photo-1531746790731-6c087fecd65a?auto=format&fit=crop&w=1000&q=80" 
+                 alt="Servo wiring and electronics" class="project-detail-img">
+
+            <p>
+                Testing revealed that while the geometric solution was correct, mechanical backlash in the cheap servos introduced positional errors. To mitigate this, I implemented a closed-loop control system using external potentiometers on the primary joints. The final iteration achieved a positional accuracy of ±2mm, which is sufficient for basic educational demonstrations and simple stacking tasks.
+            </p>
+        </article>
+    </main>
+
+    <footer><p>&copy; 2023 John Doe. Built with logic and steel.</p></footer>
+    <script src="script.js"></script>
+</body>
+</html>

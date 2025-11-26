@@ -1,0 +1,661 @@
+/* --- CSS Variables & Reset --- */
+:root {
+    /* Light Mode (Default) */
+    --bg-color: #ffffff;
+    --text-color: #1a1a1a;
+    --text-secondary: #555555;
+    --accent-color: #0056b3; 
+    --border-color: #e0e0e0;
+    --button-bg: #1a1a1a;
+    --button-text: #ffffff;
+    
+    --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --spacing: 2rem;
+    --header-height: 80px;
+}
+
+[data-theme="dark"] {
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --text-secondary: #a0a0a0;
+    --accent-color: #64b5f6;
+    --border-color: #333333;
+    --button-bg: #ffffff;
+    --button-text: #121212;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden; /* Prevent horizontal scroll on mobile */
+}
+
+/* --- Header & Nav --- */
+.site-header {
+    height: var(--header-height);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
+    border-bottom: 1px solid transparent;
+    position: relative;
+    z-index: 100;
+}
+
+.logo a {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--text-color);
+    letter-spacing: -0.5px;
+}
+
+.logo .dot {
+    color: var(--accent-color);
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.nav-links a:hover {
+    color: var(--accent-color);
+}
+
+/* Theme Toggle Button */
+#theme-toggle {
+    background: none;
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    padding: 0.4rem 0.8rem;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#theme-toggle:hover {
+    border-color: var(--accent-color);
+}
+
+/* Mobile Menu Button (Hidden on Desktop) */
+.mobile-only {
+    display: none;
+}
+
+#menu-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.bar {
+    width: 25px;
+    height: 2px;
+    background-color: var(--text-color);
+    display: block;
+    transition: 0.3s;
+}
+
+/* --- Hero Section --- */
+.hero-section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: 2rem 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.hero-content {
+    max-width: 700px;
+}
+
+.intro-tag {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+h1 {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.hero-subtext {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin-bottom: 2.5rem;
+    max-width: 500px;
+}
+
+/* Buttons */
+.cta-group {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap; /* Allows buttons to stack on tiny screens */
+}
+
+.btn {
+    padding: 0.8rem 1.8rem;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.primary-btn {
+    background-color: var(--button-bg);
+    color: var(--button-text);
+}
+
+.secondary-btn {
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+}
+
+.secondary-btn:hover {
+    border-color: var(--text-color);
+}
+
+/* --- Footer --- */
+footer {
+    padding: var(--spacing) 5%;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-top: auto;
+}
+
+/* --- Responsive / Mobile Design --- */
+@media (max-width: 768px) {
+    /* Header Adjustments */
+    .mobile-only {
+        display: flex;
+    }
+
+    /* Hide Navigation Links by default on mobile */
+    .nav-links {
+        position: absolute;
+        top: var(--header-height);
+        left: 0;
+        width: 100%;
+        background-color: var(--bg-color);
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem 0;
+        border-bottom: 1px solid var(--border-color);
+        gap: 1.5rem;
+        transform: translateY(-150%); /* Start hidden above */
+        transition: transform 0.3s ease-in-out;
+        z-index: 99;
+    }
+
+    /* Show Nav when active class is added via JS */
+    .nav-links.active {
+        transform: translateY(0);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-links a {
+        font-size: 1.2rem; /* Larger touch targets */
+    }
+
+    /* Hero Text Adjustments */
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-subtext {
+        font-size: 1rem;
+    }
+
+    .cta-group {
+        width: 100%;
+    }
+
+    .btn {
+        flex: 1; /* Buttons span full width on small mobile */
+    }
+}
+/* --- About Page Specific Styles --- */
+
+/* Highlight the active link in the navbar */
+.nav-links a.active-link {
+    color: var(--accent-color);
+    font-weight: 700;
+}
+
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.about-section {
+    padding: 4rem 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.about-container {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr; /* Image takes less space than text */
+    gap: 4rem;
+    align-items: center;
+}
+
+/* Image Styling */
+.about-image-wrapper {
+    position: relative;
+}
+
+.profile-img {
+    width: 100%;
+    max-width: 400px; /* Prevent it from getting too huge on large screens */
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15); /* Soft shadow for depth */
+    display: block;
+    margin: 0 auto;
+}
+
+/* Text Styling */
+.about-text h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+}
+
+.about-text p {
+    margin-bottom: 1.5rem;
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    text-align: justify; /* Optional: gives a clean "newspaper" look */
+}
+
+/* Responsive adjustments for About Page */
+@media (max-width: 900px) {
+    .about-container {
+        grid-template-columns: 1fr; /* Stack vertically */
+        gap: 2rem;
+        text-align: center;
+    }
+
+    .about-text p {
+        text-align: left; /* Keep text readable on mobile */
+    }
+
+    .profile-img {
+        max-width: 300px;
+    }
+}
+/* --- Links Page Specific Styles --- */
+
+.links-section {
+    padding: 4rem 5%;
+    width: 100%;
+    max-width: 1200px; /* Narrower width for better reading experience */
+    margin: 0 auto;
+}
+
+.section-intro {
+    color: var(--text-secondary);
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+}
+
+.link-item {
+    /* 2-3 lines of empty space (approx 4rem to 5rem) */
+    margin-bottom: 5rem; 
+    border-left: 3px solid var(--border-color); /* Optional: visual guide line */
+    padding-left: 1.5rem;
+    transition: border-color 0.3s ease;
+}
+
+.link-item:hover {
+    border-color: var(--accent-color);
+}
+
+.link-desc {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    margin-bottom: 0.8rem;
+    line-height: 1.7;
+}
+
+.external-link {
+    display: inline-block;
+    font-weight: 600;
+    color: var(--accent-color);
+    text-decoration: none;
+    font-size: 1rem;
+    position: relative;
+}
+
+.external-link:hover {
+    text-decoration: underline;
+    opacity: 0.8;
+}
+
+/* Dark mode adjustment for the border line */
+[data-theme="dark"] .link-item {
+    border-left-color: #333;
+}
+[data-theme="dark"] .link-item:hover {
+    border-left-color: var(--accent-color);
+}
+/* --- Contact Page Specific Styles --- */
+
+.contact-section {
+    padding: 4rem 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.contact-header {
+    margin-bottom: 3rem;
+    max-width: 600px;
+}
+
+.contact-header h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.contact-header p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+/* --- Contact Page Specific Styles --- */
+
+.contact-section {
+    padding: 4rem 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.contact-header {
+    margin-bottom: 3rem;
+    max-width: 600px;
+}
+
+.contact-header h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.contact-header p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+/* Grid Layout: Single Column, restricted width */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr; 
+    max-width: 700px; /* Increased slightly to give more room */
+    gap: 1.5rem;      /* Comfortable spacing between buttons */
+}
+
+/* Card Styling */
+.contact-card {
+    display: flex; 
+    align-items: center; /* Vertically center content */
+    background-color: var(--bg-color);
+    border: 1px solid var(--border-color);
+    padding: 1.5rem 2rem; /* More internal padding */
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.contact-card:hover {
+    border-color: var(--accent-color);
+    transform: translateX(10px);
+}
+
+/* Icon Styling */
+.card-icon {
+    font-size: 2rem;
+    margin-right: 3.5rem; /* Big gap between Icon and Text */
+    color: var(--text-color);
+    width: 40px; 
+    text-align: center;
+    flex-shrink: 0; /* Prevents icon from getting squashed */
+}
+
+/* Text Wrapper Styling - This fixes the "narrow" issue */
+.card-info {
+    display: flex;
+    flex-direction: column; /* Stacks Title on top of Description */
+    flex: 1; /* Forces text to take up all remaining width */
+}
+
+.card-info h3 {
+    font-size: 1.25rem;
+    color: var(--text-color);
+    margin: 0 0 0.2rem 0; /* Small gap between title and desc */
+    line-height: 1.2;
+}
+
+.card-info p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin: 0;
+}
+
+/* Hover effects */
+.contact-card:hover .card-icon {
+    color: var(--accent-color);
+}
+
+[data-theme="dark"] .contact-card:hover {
+    background-color: #1e1e1e;
+}
+/* --- Projects Page Specific Styles --- */
+
+.projects-section {
+    padding: 4rem 5%;
+    max-width: 1000px; /* Slightly narrower for better readability */
+    margin: 0 auto;
+    width: 100%;
+}
+
+.projects-header {
+    margin-bottom: 4rem;
+}
+
+.projects-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.projects-header p {
+    color: var(--text-secondary);
+}
+
+/* Project Card Container */
+.project-card {
+    display: flex;
+    gap: 2.5rem; /* Space between image and text */
+    text-decoration: none; /* Remove underline from link */
+    color: inherit; /* Inherit text color */
+    margin-bottom: 5rem; /* ~3 lines of empty space */
+    align-items: flex-start;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.project-card:hover {
+    opacity: 0.9;
+    transform: translateX(5px); /* Subtle slide to indicate it's clickable */
+}
+
+/* Thumbnail Styling */
+.project-thumb-wrapper {
+    flex-shrink: 0; /* Prevents image from shrinking */
+    width: 200px; /* Fixed width for consistency */
+    height: 140px;
+    overflow: hidden;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+}
+
+.project-thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures image covers the box without stretching */
+    transition: transform 0.5s ease;
+}
+
+.project-card:hover .project-thumb {
+    transform: scale(1.05); /* Zoom effect on hover */
+}
+
+/* Text Info Styling */
+.project-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-info h2 {
+    font-size: 1.5rem;
+    color: var(--text-color);
+    margin-bottom: 0.8rem;
+    transition: color 0.3s ease;
+}
+
+.project-info p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.read-more {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--accent-color);
+}
+
+.project-card:hover h2 {
+    color: var(--accent-color); /* Highlight title on hover */
+}
+
+/* Responsive - Mobile Stack */
+@media (max-width: 768px) {
+    .project-card {
+        flex-direction: column; /* Stack image on top of text */
+        gap: 1rem;
+        margin-bottom: 4rem;
+    }
+
+    .project-thumb-wrapper {
+        width: 100%; /* Full width image on mobile */
+        height: 200px;
+    }
+}
+/* --- Project Detail Sub-pages --- */
+
+.project-article {
+    padding: 4rem 5%;
+    max-width: 1200px; /*was 800 px changed to 1200, Optimal reading width */
+    margin: 0 auto;
+    width: 100%;
+}
+
+.project-title {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    line-height: 1.2;
+}
+
+.project-detail-img {
+    display: block;          /* Allows centering */
+    width: 100%;             /* Responsive: shrinks on mobile */
+    max-width: 800px;        /* Desktop: prevents it from getting too huge */
+    height: auto;
+    border-radius: 8px;
+    margin: 0 auto 2rem auto; /* Top=0, Horizontal=Auto(Center), Bottom=2rem */
+    border: 1px solid var(--border-color);
+}
+
+.project-article p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+}
+
+/* Code Snippet Styling */
+.code-container {
+    background-color: #f4f4f4;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+    overflow-x: auto; /* Scroll horizontally on small screens */
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9rem;
+}
+
+.code-header {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+/* Dark Mode Code Snippet adjustments */
+[data-theme="dark"] .code-container {
+    background-color: #1e1e1e;
+    color: #d4d4d4;
+}
